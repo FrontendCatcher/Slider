@@ -14,13 +14,14 @@
         Click here
     </span>
 
-    <div id=container>
+    <textarea id=container>
 
-    </div>
+    </textarea>
 
     <div id=source>
         <p> Hello world </p>
         <button> Dit is een leuk knopje </button>
+        <!--comment-->
         <p> Lorem ipsum blablablabla</p>
     </div>
 
@@ -43,18 +44,19 @@
 
         var code = document.getElementById("source").outerHTML;
         var container = document.getElementById("container");
-        
-        document.getElementById("source").hidden = true;
-        
+
         container.innerHTML = code;
 
-        //var result = document.getElementById("target").innerHTML(code);​
+        document.getElementById("source").hidden = true;
+        document.getElementById("container").hidden = false;
+
     }
 
     function displayFrontend() {
         var webpage = document.getElementById("source");
         
-        document.getElementById("source").hidden = true;
+        document.getElementById("source").hidden = false;
+        document.getElementById("container").hidden = true;
     }
 </script>
 
