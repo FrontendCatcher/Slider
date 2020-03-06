@@ -1,77 +1,92 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Hello World</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="index.css"
+        />
+    </head>
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hello World</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-</head>
+    <body>
+        <div>
+            <span
+                role="button"
+                tabindex="0"
+                aria-pressed="false"
+                onclick="onClick(event)"
+            >
+                Click here
+            </span>
+        </div>
 
-<body>
-    <span role="button" tabindex="0" aria-pressed="false" onclick="onClick(event)">
-        Click here
-    </span>
+        <div>
+            <textarea id="container" hidden> </textarea>
+        </div>
 
-    <textarea id=container>
+        <div id="source">
+            <p>Hello world</p>
+            <button>Dit is een leuk knopje</button>
+            <!--comment-->
+            <p>Lorem ipsum blablablabla</p>
+        </div>
+    </body>
 
-    </textarea>
+    <script>
+        function onClick(event) {
+            toggleButton(event.target);
+        }
 
-    <div id=source>
-        <p> Hello world </p>
-        <button> Dit is een leuk knopje </button>
-        <!--comment-->
-        <p> Lorem ipsum blablablabla</p>
-    </div>
+        function toggleButton(element) {
+            var pressed = element.getAttribute("aria-pressed") === "true";
+            element.setAttribute("aria-pressed", !pressed);
+            if (pressed) displayCode();
+            else displayFrontend();
+        }
+        function displayCode() {
+            var code = document.getElementById("source").outerHTML;
+            var container = document.getElementById("container");
 
-</body>
+            container.innerHTML = code;
 
-<script>
-    function onClick(event) {
-        toggleButton(event.target);
-    }
+            document.getElementById("source").hidden = true;
+            document.getElementById("container").hidden = false;
+        }
 
-    function toggleButton(element) {
-        var pressed = (element.getAttribute("aria-pressed") === "true");
-        element.setAttribute("aria-pressed", !pressed);
-        if (pressed)
-            displayCode()
-        else
-            displayFrontend()
-    }
-    function displayCode() {
+        function displayFrontend() {
+            var webpage = document.getElementById("source");
 
-        var code = document.getElementById("source").outerHTML;
-        var container = document.getElementById("container");
+            document.getElementById("source").hidden = false;
+            document.getElementById("container").hidden = true;
+        }
+    </script>
 
-        container.innerHTML = code;
+    <style>
+        button,
+        [role="button"] {
+            padding: 3px;
+            border: 2px solid transparent;
+        }
 
-        document.getElementById("source").hidden = true;
-        document.getElementById("container").hidden = false;
+        button:active,
+        button:focus,
+        [role="button"][aria-pressed="true"] {
+            border: 2px solid #000;
+        }
 
-    }
-
-    function displayFrontend() {
-        var webpage = document.getElementById("source");
-        
-        document.getElementById("source").hidden = false;
-        document.getElementById("container").hidden = true;
-    }
-</script>
-
-<style>
-    button,
-    [role="button"] {
-        padding: 3px;
-        border: 2px solid transparent;
-    }
-
-    button:active,
-    button:focus,
-    [role="button"][aria-pressed="true"] {
-        border: 2px solid #000;
-    }
-</style>
-
+        textarea {
+            overflow: auto;
+            border: none;
+            /* margin: 0;
+            padding: 0;
+            border: 0; */
+            width: 100%;
+            height: 1000px;
+        }
+    </style>
 </html>
