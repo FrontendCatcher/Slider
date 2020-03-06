@@ -39,17 +39,22 @@
         else
             displayFrontend()
     }
-
     function displayCode() {
+
         var code = document.getElementById("source").outerHTML;
         var container = document.getElementById("container");
-
+        
+        document.getElementById("source").hidden = true;
+        
         container.innerHTML = code;
+
         //var result = document.getElementById("target").innerHTML(code);​
     }
 
     function displayFrontend() {
-        //displayFrontend
+        var webpage = document.getElementById("source");
+        
+        document.getElementById("source").hidden = true;
     }
 </script>
 
