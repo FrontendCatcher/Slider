@@ -11,11 +11,16 @@
 </head>
 
 <body>
-    <div>
-        <p> Hello world </p>
+    <div id=source>
+        <p> Hello world </p> 
         <span role="button" tabindex="0" aria-pressed="false" onclick="onClick(event)">
             Click here
         </span>
+    </div>
+    <div id=target>
+       <pre id=codeActive>
+           
+       </pre>
     </div>
 </body>
 
@@ -35,7 +40,11 @@
     }
 
     function displayCode() {
-        //display code
+        var code = document.getElementById("source");
+        var preEl = document.getElementById("codeActive");
+
+        preEl.innerHTML=code;
+        //var result = document.getElementById("target").innerHTML(code);​
     }
 
     function displayFrontend() {
