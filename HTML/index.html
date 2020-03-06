@@ -7,21 +7,23 @@
     <title>Hello World</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-    <script src="index.js"></script>
 </head>
 
 <body>
+    <span role="button" tabindex="0" aria-pressed="false" onclick="onClick(event)">
+        Click here
+    </span>
+
+    <div id=container>
+
+    </div>
+
     <div id=source>
-        <p> Hello world </p> 
-        <span role="button" tabindex="0" aria-pressed="false" onclick="onClick(event)">
-            Click here
-        </span>
+        <p> Hello world </p>
+        <button> Dit is een leuk knopje </button>
+        <p> Lorem ipsum blablablabla</p>
     </div>
-    <div id=target>
-       <pre id=codeActive>
-           
-       </pre>
-    </div>
+
 </body>
 
 <script>
@@ -32,18 +34,17 @@
     function toggleButton(element) {
         var pressed = (element.getAttribute("aria-pressed") === "true");
         element.setAttribute("aria-pressed", !pressed);
-
         if (pressed)
-            displayCode
+            displayCode()
         else
-            displayFrontend
+            displayFrontend()
     }
 
     function displayCode() {
-        var code = document.getElementById("source");
-        var preEl = document.getElementById("codeActive");
+        var code = document.getElementById("source").outerHTML;
+        var container = document.getElementById("container");
 
-        preEl.innerHTML=code;
+        container.innerHTML = code;
         //var result = document.getElementById("target").innerHTML(code);​
     }
 
