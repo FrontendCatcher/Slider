@@ -25,9 +25,21 @@
     }
 
     function toggleButton(element) {
-        console.log('Hallo wereld 2')
         var pressed = (element.getAttribute("aria-pressed") === "true");
         element.setAttribute("aria-pressed", !pressed);
+
+        if (pressed)
+            displayCode
+        else
+            displayFrontend
+    }
+
+    function displayCode() {
+        //display code
+    }
+
+    function displayFrontend() {
+        //displayFrontend
     }
 </script>
 
